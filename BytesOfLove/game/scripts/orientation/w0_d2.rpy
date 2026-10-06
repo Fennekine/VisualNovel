@@ -328,23 +328,31 @@ label w0_d2_AfterStatue:
             jump w0_d2_LunchJava
 
 label w0_d2_AfterLunch:
-    show bsl_talk with dissolve
+
+    # Focus on the leader as lunch ends.
+    scene dining_hall
+    show bsl_talk at center
+    with dissolve
+
     bsl "\"Okay guys, lunch is over.\""
     bsl "\"Everyone, make sure you get back to Room 283 in 10 minutes.\""
 
-    scene breakout_room with fade 
+    scene breakout_room with fade
 
-    show python_normal at right with easeinright
-    show js_normal at left with easeinleft
-    show cpp_normal with dissolve
-    show bsl_talk
+    show bsl_talk at center with dissolve
     bsl "\"Okay guys, we are now going to be playing a fun game to test your knowledge.\""
     bsl "\"Since The University of ByteBorough is renowned for the College of Computing...\""
     bsl "\"We’ll be playing a trivia game about computer science!\""
     bsl "\"We are going to be splitting the room up into groups based on the table you’re currently at.\""
     bsl "\"Everybody ready?\""
 
+    # Return to the group when their conversation begins.
     hide bsl_talk
+    show js_normal at left
+    show cpp_normal at center
+    show python_normal at right
+    with dissolve
+
     mc "\"Okay guys, I am really good at trivia.\""
     mc "\"And we are team 1, and one happens to also be my lucky number.\""
     mc "\"I don’t know much about computer science stuff yet, but I am really good at guessing.\""
@@ -358,12 +366,17 @@ label w0_d2_AfterLunch:
     show js_talk at left
     js "\"I’m sure we won’t need luck, we all seem pretty smart!\""
     hide js_talk
-    show js_smirk at right
-    show bsl_talk
+    hide cpp_normal
+    hide python_normal
+    show bsl_talk at center
+    with dissolve
+
     bsl "\"Okay here is the first question\""
     hide bsl_talk
-    hide js_smirk
     show js_normal at left
+    show cpp_normal at center
+    show python_normal at right
+    with dissolve
     #display on screen
     #what will the following python code print? ...
     hide cpp_normal
@@ -451,10 +464,10 @@ label w0_d2_AfterLunch:
             js "\"Since our string is ‘5’, the asterisk means that we repeat it 3 times making the answer ‘555’.\""
             hide js_talk
             hide python_normal
-            show python_pocket_happy at right
+            show python_angry_talk at right
             p "\"C++, just because you have more experience than us doesn’t make you smarter than us.\""
             p "\"You have just been doing it for longer.\""
-            hide python_pocket_happy
+            hide python_angry_talk
             show python_normal at right
             hide cpp_angry
             show cpp_handhip_talk
@@ -486,10 +499,10 @@ label w0_d2_AfterLunch:
             js "\"Now we know that the answer is ‘555’, since we’re repeating the string ‘5’, 3 times.\""
             hide js_talk
             hide python_normal
-            show python_pocket_happy at right
+            show python_angry_talk at right
             p "\"C++, just because you have more experience than us doesn’t make you smarter than us.\""
             p "\"You have just been doing it for longer.\""
-            hide python_pocket_happy
+            hide python_angry_talk
             show python_normal at right
             hide cpp_angry
             show cpp_handhip_talk
@@ -524,10 +537,10 @@ label w0_d2_AfterLunch:
             js "\"We just switch the ‘numbers’ around and get '555'.\""
             hide js_talk
             hide python_normal
-            show python_pocket_happy at right
+            show python_angry_talk at right
             p "\"C++, just because you have more experience than us doesn’t make you smarter than us.\""
             p "\"You have just been doing it for longer.\""
-            hide python_pocket_happy
+            hide python_angry_talk
             show python_normal at right
             hide cpp_angry
             show cpp_handhip_talk
@@ -613,10 +626,10 @@ label w0_d2_AfterLunch:
             js "\"So, now we know that, we need to repeat ‘5’ three times to get the answer ‘555’.\""
             hide js_talk
             hide python_normal
-            show python_pocket_happy at right
+            show python_angry_talk at right
             p "\"C++, just because you have more experience than us doesn’t make you smarter than us.\""
             p "\"You have just been doing it for longer.\""
-            hide python_pocket_happy
+            hide python_angry_talk
             show python_normal at right
             hide cpp_angry
             show cpp_handhip_talk
@@ -626,21 +639,30 @@ label w0_d2_AfterLunch:
             hide cpp_handhip_talk
             show cpp_handhip_normal
 
-    # show js_normal
-    # show cpp_normal at left
-    # show python_pocket at right
-    show bsl_talk
+    hide js_normal
+    hide cpp_handhip_normal
+    hide python_normal
+    show bsl_talk at center
+    with dissolve
+
     bsl "\"Time’s up everyone!\""
     bsl "\"Write your answers down and hold them up.\""
+
     hide bsl_talk
-    show bsl_normal
+    show bsl_normal at center
     "....."
+
     hide bsl_normal
-    show bsl_talk
+    show bsl_talk at center
     bsl "\"Wow! It looks like every team got that first question right!\""
     bsl "\"This next one will be a little bit harder, get ready.\""
     bsl "\"What does the following Python code print?\""
+
     hide bsl_talk
+    show js_normal at left
+    show cpp_handhip_normal at center
+    show python_normal at right
+    with dissolve
 
     window hide
     show question_2 with dissolve:
